@@ -17,7 +17,7 @@ const InvoiceForm = () => {
   const [showInvoiceInfo, setShowInvoiceInfo] = useState(true);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background font-lato">
       <div className="container mx-auto px-6 py-10 max-w-[1100px]">
         {/* Back button */}
         <Button
@@ -40,6 +40,7 @@ const InvoiceForm = () => {
               </h1>
               <Heart className="h-5 w-5 text-muted-foreground hover:text-primary cursor-pointer" />
             </div>
+
             {/* Divider line below title */}
             <div className="border-t border-border mb-6" />
 
@@ -145,60 +146,15 @@ const InvoiceForm = () => {
                 </Select>
               </div>
 
-              {/* Description with Toolbar */}
+              {/* Description */}
               <div>
                 <Label className="text-sm font-medium">
                   <span className="text-destructive">*</span> Description
                 </Label>
-
-                {/* Toolbar + Textarea wrapper */}
-                <div className="mt-2 border rounded-md bg-card">
-                  {/* Toolbar */}
-                  <div className="flex items-center gap-2 px-2 py-1 border-b">
-                    {/* Paragraph dropdown */}
-                    <select className="text-sm border-none bg-transparent outline-none">
-                      <option>Paragraph</option>
-                      <option>Heading 1</option>
-                      <option>Heading 2</option>
-                    </select>
-
-                    <div className="h-5 w-px bg-border mx-2" />
-
-                    {/* Bold / Italic */}
-                    <button className="p-1.5 hover:bg-muted rounded text-sm font-bold">B</button>
-                    <button className="p-1.5 hover:bg-muted rounded text-sm italic">I</button>
-
-                    <div className="h-5 w-px bg-border mx-2" />
-
-                    {/* Alignment */}
-                    <button className="p-1.5 hover:bg-muted rounded">≡</button>
-                    <button className="p-1.5 hover:bg-muted rounded">≡</button>
-                    <button className="p-1.5 hover:bg-muted rounded">≡</button>
-                    <button className="p-1.5 hover:bg-muted rounded">≡</button>
-
-                    <div className="h-5 w-px bg-border mx-2" />
-
-                    {/* Lists */}
-                    <button className="p-1.5 hover:bg-muted rounded">•</button>
-                    <button className="p-1.5 hover:bg-muted rounded">1.</button>
-
-                    <div className="h-5 w-px bg-border mx-2" />
-
-                    {/* Links / Media / Code */}
-                    <button className="p-1.5 hover:bg-muted rounded">🔗</button>
-                    {/* <button className="p-1.5 hover:bg-muted rounded">🖼️</button> */}
-                    <button className="p-1.5 hover:bg-muted rounded">{`</>`}</button>
-                  </div>
-
-                  {/* Textarea */}
-                  <Textarea
-                    id="description"
-                    className="min-h-[160px] border-none resize-none focus-visible:ring-0"
-                    placeholder="Enter description..."
-                  />
-                </div>
-
-                {/* Add attachments aligned right */}
+                <Textarea
+                  id="description"
+                  className="mt-2 min-h-[160px] resize-none"
+                />
                 <div className="border-t border-border mt-12 mb-4" />
                 <div className="mt-2 flex justify-end">
                   <button className="flex items-center gap-1 text-sm text-black hover:underline">
@@ -211,14 +167,13 @@ const InvoiceForm = () => {
 
           {/* RIGHT SIDEBAR */}
           <div className="space-y-4">
-            <Card className="p-4">
+            <Card className="p-4 rounded-lg">
               <div className="border-b border-border mb-4">
-                <Button className="w-full h-10 rounded-lg font-medium">
+                <Button className="w-full h-6 rounded-lg font-medium bg-[#4F52BD] text-white">
                   Submit
                 </Button>
               </div>
 
-              {/* Divider top */}
               <div className="border-t border-border mb-4" />
               <h3 className="font-medium text-sm mb-3 mt-0">
                 Required information
@@ -244,3 +199,4 @@ const InvoiceForm = () => {
 };
 
 export default InvoiceForm;
+

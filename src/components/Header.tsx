@@ -1,5 +1,4 @@
 import { Search, Heart, ShoppingCart, Key, ChevronDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import carrierLogo from "@/assets/carrier-logo.png";
 
@@ -7,10 +6,16 @@ const Header = () => {
   return (
     <header className="bg-gradient-to-r from-nav-gradient-from to-nav-gradient-to text-nav-text">
       <div className="flex items-center justify-between px-6 py-2.5">
+        {/* Logo */}
         <div className="flex items-center">
-          <img src={carrierLogo} alt="Carrier" className="h-10" />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Logo_of_the_Carrier_Corporation.svg"
+            alt="Carrier"
+            className="h-10 mix-blend-screen" 
+          />
         </div>
         
+        {/* Search */}
         <div className="flex-1 max-w-xl mx-8">
           <div className="relative">
             <Input
@@ -22,6 +27,7 @@ const Header = () => {
           </div>
         </div>
 
+        {/* Right Actions */}
         <div className="flex items-center gap-3">
           <button className="flex items-center gap-1.5 text-nav-text hover:text-white text-sm">
             <Key className="h-4 w-4" />
@@ -46,40 +52,27 @@ const Header = () => {
         </div>
       </div>
 
+      {/* Navigation Menu */}
       <nav className="bg-gradient-to-r from-nav-secondary-gradient-from to-nav-secondary-gradient-to px-6 py-2.5">
         <div className="flex items-center gap-6 text-sm">
-          <button className="text-nav-text hover:text-white py-1.5 flex items-center gap-1.5">
-            All Applications
-            <ChevronDown className="h-3.5 w-3.5" />
-          </button>
-          <button className="text-nav-text hover:text-white py-1.5 flex items-center gap-1.5">
-            Identity & Access
-            <ChevronDown className="h-3.5 w-3.5" />
-          </button>
-          <button className="text-nav-text hover:text-white py-1.5 flex items-center gap-1.5">
-            Security
-            <ChevronDown className="h-3.5 w-3.5" />
-          </button>
-          <button className="text-nav-text hover:text-white py-1.5 flex items-center gap-1.5">
-            Computer & Peripherals
-            <ChevronDown className="h-3.5 w-3.5" />
-          </button>
-          <button className="text-nav-text hover:text-white py-1.5 flex items-center gap-1.5">
-            Office 365
-            <ChevronDown className="h-3.5 w-3.5" />
-          </button>
-          <button className="text-nav-text hover:text-white py-1.5 flex items-center gap-1.5">
-            Cloud
-            <ChevronDown className="h-3.5 w-3.5" />
-          </button>
-          <button className="text-nav-text hover:text-white py-1.5 flex items-center gap-1.5">
-            Server, Storage & Network
-            <ChevronDown className="h-3.5 w-3.5" />
-          </button>
-          <button className="text-nav-text hover:text-white py-1.5 flex items-center gap-1.5">
-            Procure-To-Pay
-            <ChevronDown className="h-3.5 w-3.5" />
-          </button>
+          {[
+            "All Applications",
+            "Identity & Access",
+            "Security",
+            "Computer & Peripherals",
+            "Office 365",
+            "Cloud",
+            "Server, Storage & Network",
+            "Procure-To-Pay",
+          ].map((item) => (
+            <button
+              key={item}
+              className="text-nav-text hover:text-white py-1.5 flex items-center gap-1.5"
+            >
+              {item}
+              <ChevronDown className="h-3.5 w-3.5" />
+            </button>
+          ))}
         </div>
       </nav>
     </header>
@@ -87,3 +80,4 @@ const Header = () => {
 };
 
 export default Header;
+
