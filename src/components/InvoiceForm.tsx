@@ -75,16 +75,16 @@ const InvoiceForm = () => {
 
   return (
     <div className="min-h-screen bg-background font-lato">
-      <div className="container mx-auto px-6 py-10 max-w-[1100px]">
-        {/* Back button */}
-        <Button
-          variant="ghost"
-          size="sm"
-          className="mb-6 text-primary hover:text-primary px-0"
-        >
-          <ChevronLeft className="mr-1 h-4 w-4" />
-          Back
-        </Button>
+    <div className="container mx-auto px-6 py-10 max-w-[1100px]">
+  {/* Back button */}
+  <Button
+    variant="ghost"
+    size="sm"
+    className="mb-6 text-primary bg-transparent hover:bg-transparent hover:text-primary"
+  >
+    <ChevronLeft className="mr-1 w-4" />
+    Back
+  </Button>
 
         {/* Layout */}
         <form onSubmit={handleSubmit}>
