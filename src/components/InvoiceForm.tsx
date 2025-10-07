@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronLeft, Heart, Info, X } from "lucide-react";
+import { ChevronLeft, Heart, Info, X, CheckCircle2, XCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -269,31 +269,49 @@ const InvoiceForm = () => {
 
         {/* 🟡 Response Popup */}
         <AlertDialog open={openDialog} onOpenChange={setOpenDialog}>
-          <AlertDialogContent>
-            <AlertDialogHeader>
-              <AlertDialogTitle>
-                {apiResponse?.success ? "✅ Success" : "❌ Error"}
-              </AlertDialogTitle>
-              <AlertDialogDescription>
-                {apiResponse?.message}
-                {apiResponse?.success && apiResponse.data && (
-                  <div className="mt-3 text-sm">
-                    <p>
-                      <strong>Record Number:</strong>{" "}
-                      {apiResponse.data.record_number}
-                    </p>
-                    <p>
-                      <strong>Sys ID:</strong> {apiResponse.data.sys_id}
-                    </p>
-                    <p>
-                      <strong>Created On:</strong> {apiResponse.data.created_on}
-                    </p>
+          <AlertDialogContent className="max-w-md">
+            <AlertDialogHeader className="space-y-4">
+              <div className="flex flex-col items-center justify-center space-y-3">
+                {apiResponse?.success ? (
+                  <div className="rounded-full bg-green-100 dark:bg-green-900/20 p-3">
+                    <CheckCircle2 className="h-12 w-12 text-green-600 dark:text-green-500" />
+                  </div>
+                ) : (
+                  <div className="rounded-full bg-red-100 dark:bg-red-900/20 p-3">
+                    <XCircle className="h-12 w-12 text-red-600 dark:text-red-500" />
                   </div>
                 )}
+                <AlertDialogTitle className="text-2xl text-center">
+                  {apiResponse?.success ? "Success!" : "Error"}
+                </AlertDialogTitle>
+              </div>
+              <AlertDialogDescription className="text-center text-base">
+                {apiResponse?.message}
               </AlertDialogDescription>
+              {apiResponse?.success && apiResponse.data && (
+                <div className="mt-4 rounded-lg bg-muted/50 p-4 space-y-2.5">
+                  <div className="flex justify-between items-center py-1">
+                    <span className="text-sm font-medium text-muted-foreground">Record Number:</span>
+                    <span className="text-sm font-semibold">{apiResponse.data.record_number}</span>
+                  </div>
+                  <div className="border-t border-border" />
+                  <div className="flex justify-between items-center py-1">
+                    <span className="text-sm font-medium text-muted-foreground">Sys ID:</span>
+                    <span className="text-sm font-mono text-xs">{apiResponse.data.sys_id}</span>
+                  </div>
+                  <div className="border-t border-border" />
+                  <div className="flex justify-between items-center py-1">
+                    <span className="text-sm font-medium text-muted-foreground">Created On:</span>
+                    <span className="text-sm">{apiResponse.data.created_on}</span>
+                  </div>
+                </div>
+              )}
             </AlertDialogHeader>
-            <AlertDialogFooter>
-              <AlertDialogAction onClick={() => setOpenDialog(false)}>
+            <AlertDialogFooter className="mt-6">
+              <AlertDialogAction 
+                onClick={() => setOpenDialog(false)}
+                className="w-full bg-primary hover:bg-primary/90"
+              >
                 Close
               </AlertDialogAction>
             </AlertDialogFooter>
